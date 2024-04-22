@@ -29,6 +29,28 @@
         app:layout_constraintStart_toEndOf="@id/btnfragment_1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.583" />
+    <Button
+        android:id="@+id/btnfragment_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fragment 3"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnfragment_1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.583" />
+    <Button
+        android:id="@+id/btnfragment_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fragment 4"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnfragment_1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.583" />
+
+
 
     <FrameLayout
         android:id="@+id/frameLayout"
