@@ -19,7 +19,7 @@ public class Fragment_class_3 extends Fragment{
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
-            View Fragment3View = inflater.inflate(R.layout.Fragment_class_3, container,false);
+            View Fragment3View = inflater.inflate(R.layout.fragment_3, container,false);
             //TextView txtFragment1 = Fragment3View.findViewById(R.id.fragment_3);
 
             SharedPreferences sharedPreferences = getActivity().getSharedPreferences("info", Context.MODE_PRIVATE);
