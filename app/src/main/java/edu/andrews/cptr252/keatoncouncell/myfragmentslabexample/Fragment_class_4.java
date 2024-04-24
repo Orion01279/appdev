@@ -15,7 +15,7 @@ public class Fragment_class_4 extends Fragment {
                              Bundle savedInstanceState) {
 
         View Fragment4View = inflater.inflate(R.layout.fragment_4_edit, container,false);
-        //TextView txtFragment1 = Fragment3View.findViewById(R.id.fragment_3);
+        //TextView txtFragment1 = Fragment4View.findViewById(R.id.fragment_4_edit);
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("info", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
