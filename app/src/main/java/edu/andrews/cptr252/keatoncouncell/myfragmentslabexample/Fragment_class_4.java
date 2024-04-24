@@ -23,7 +23,7 @@ public class Fragment_class_4 extends Fragment {
 
 
         // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_class_example_1, container, false);
+        //return inflater.inflate(R.layout.fragment_class_4, container, false);
 
         return Fragment4View;
 
