@@ -68,7 +68,7 @@ public class shopping_list_class extends AppCompatActivity {
         if (result  == -1){
             Toast.makeText(this, "Failed to save item.", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this."Item saved successfully.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Item saved successfully.", Toast.LENGTH_SHORT).show();
         }
     }
 
