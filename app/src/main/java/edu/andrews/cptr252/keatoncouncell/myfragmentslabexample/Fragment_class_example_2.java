@@ -14,6 +14,11 @@ import androidx.fragment.app.Fragment;
 public class Fragment_class_example_2 extends Fragment {
 
 
+    //String[] productStringList = {"Apples", "Avacados", "Bananas", "Broccoli", "Grapes","Lettuce", "Onion","Orange","Peppers","Pineapple"};
+
+    //int[] iconList = {R.drawable.apples,R.drawable.avacadoes,R.drawable.banana,R.drawable.broccoli,R.drawable.grape,R.drawable.lettuce,R.drawable.onion,R.drawable.orange,R.drawable.peppers,R.drawable.pineapple};
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
