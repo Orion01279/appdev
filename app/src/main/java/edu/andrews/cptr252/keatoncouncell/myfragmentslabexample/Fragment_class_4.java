@@ -177,20 +177,19 @@ public class Fragment_class_4 extends Fragment {
                     String quantity = cursor.getString(quantityIndex);
                     String category = cursor.getString(categoryIndex);
 
-                itemList.append("Order: ").append(order).append(", ")
-                        .append("Quantity: ").append(quantity).append(", ")
-                        .append("Category: ").append(category).append("\n");
+                    itemList.append("Order: ").append(order).append(", ")
+                            .append("Quantity: ").append(quantity).append(", ")
+                            .append("Category: ").append(category).append("\n");
 
-            } while (cursor.moveToNext());
+                }
+                while (cursor.moveToNext()) ;
 
-            outputTextView.setText(itemList.toString());
+                outputTextView.setText(itemList.toString());
 
-            cursor.close();
-        } else {
-            outputTextView.setText("No items saved yet.");
+                cursor.close();
+            } else{
+                outputTextView.setText("No items saved yet.");
+            }
         }
     }
-
-
-
 }
