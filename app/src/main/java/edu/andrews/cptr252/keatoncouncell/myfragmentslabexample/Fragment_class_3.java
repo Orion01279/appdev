@@ -7,24 +7,25 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+
+
 public class Fragment_class_3 extends Fragment{
 
+    String[] groceryStringList = {"apples", "avacados", "bananas", "broccoli",
+            "grapes","lettuce", "onion",
+            "orange","peppers","pineapple"};
+
+    int[] iconList = {R.drawable.apples,R.drawable.avacadoes,R.drawable.banana
+            ,R.drawable.broccoli,R.drawable.grape,R.drawable.lettuce
+            ,R.drawable.onion,R.drawable.orange
+            ,R.drawable.peppers,R.drawable.pineapple};
 
 
-    private Drawable icon1;
-    private Drawable icon2;
-    private Drawable icon3;
-    private Drawable icon4;
-    private Drawable icon5;
-    private Drawable icon6;
-    private Drawable icon7;
-    private Drawable icon8;
-    private Drawable icon9;
-    private Drawable icon10;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,19 +34,19 @@ public class Fragment_class_3 extends Fragment{
             View Fragment3View = inflater.inflate(R.layout.fragment_3, container,false);
             //TextView txtFragment1 = Fragment3View.findViewById(R.id.fragment_3);
 
-            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("info", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
+            ListView groceryList = Fragment3View.findViewById(R.id.Produce_Items);
+            //TextView groceryText = Fragment2View.findViewById(R.id.Category_Grocery);
+            MyAdapter myAdapter = new MyAdapter(getActivity(),R.layout.product_cell);
 
-            icon1 = ContextCompat.getDrawable(getActivity(),R.drawable.apples);
-            icon2 = ContextCompat.getDrawable(getActivity(),R.drawable.avacadoes);
-            icon3 = ContextCompat.getDrawable(getActivity(),R.drawable.banana);
-            icon4 = ContextCompat.getDrawable(getActivity(),R.drawable.broccoli);
-            icon5 = ContextCompat.getDrawable(getActivity(),R.drawable.grape);
-            icon6 = ContextCompat.getDrawable(getActivity(),R.drawable.lettuce);
-            icon7 = ContextCompat.getDrawable(getActivity(),R.drawable.onion);
-            icon8 = ContextCompat.getDrawable(getActivity(),R.drawable.orange);
-            icon9 = ContextCompat.getDrawable(getActivity(),R.drawable.peppers);
-            icon10 = ContextCompat.getDrawable(getActivity(),R.drawable.pineapple);
+
+            for(int i=0; i<groceryStringList.length;i++){
+                ProductData productData;
+                productData = new ProductData(iconList[i],groceryStringList[i]);
+                myAdapter.add(productData);
+            }
+            groceryList.setAdapter(myAdapter);
+
+
 
 
             // Inflate the layout for this fragment

@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btnfragment_2"
         app:layout_constraintEnd_toStartOf="@id/btnfragment_3"
-        android:text="Fragment 1"
+        android:text="Frozen"
         tools:layout_editor_absoluteX="10dp"
         tools:layout_editor_absoluteY="-7dp" />
 
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@id/btnfragment_1"
         app:layout_constraintBottom_toTopOf="@id/frameLayout"
         app:layout_constraintEnd_toStartOf="@id/btnfragment_4"
-        android:text="Fragment 2"
+        android:text="Grocery"
         tools:layout_editor_absoluteX="10dp"
         tools:layout_editor_absoluteY="49dp" />
 
@@ -40,7 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnfragment_1"
         app:layout_constraintBottom_toTopOf="@id/btnfragment_4"
-        android:text="Fragment 3"
+        android:text="Produce"
         tools:layout_editor_absoluteX="230dp"
         tools:layout_editor_absoluteY="-10dp" />
 
@@ -52,7 +52,8 @@
         app:layout_constraintTop_toBottomOf="@id/btnfragment_3"
         app:layout_constraintBottom_toTopOf="@id/frameLayout"
         app:layout_constraintStart_toEndOf="@id/btnfragment_2"
-        android:text="Fragment 4"
+        android:text="Shopping List"
+        android:textSize="12dp"
         tools:layout_editor_absoluteX="231dp"
         tools:layout_editor_absoluteY="49dp" />
 
