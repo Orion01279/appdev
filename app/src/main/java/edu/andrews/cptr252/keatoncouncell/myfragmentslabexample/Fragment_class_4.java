@@ -127,7 +127,8 @@ public class Fragment_class_4 extends Fragment {
         String order = orderEditText.getText().toString();
         String code = editCodeEditText.getText().toString();
         String category = categorySpinner.getSelectedItem().toString();
-
+        String item = itemSpinner.getSelectedItem().toString();
+        
         ContentValues values = new ContentValues();
         values.put("OrderNumber", order);
         values.put("ProductQuantity", code);
@@ -160,36 +161,40 @@ public class Fragment_class_4 extends Fragment {
         super.onDestroy();
     }
     private void displaySavedList() {
-
         Cursor cursor = database.rawQuery("SELECT * FROM ShoppingList", null);
 
         if (cursor != null && cursor.moveToFirst()) {
             StringBuilder itemList = new StringBuilder();
 
+            int orderIndex = cursor.getColumnIndex("OrderNumber");
+            int quantityIndex = cursor.getColumnIndex("ProductQuantity");
+            int categoryIndex = cursor.getColumnIndex("Category");
+            int itemIndex = cursor.getColumnIndex("Item");
 
             do {
-                int orderIndex = cursor.getColumnIndex("OrderNumber");
-                int quantityIndex = cursor.getColumnIndex("ProductQuantity");
-                int categoryIndex = cursor.getColumnIndex("Category");
-
                 if (orderIndex >= 0 && quantityIndex >= 0 && categoryIndex >= 0) {
                     String order = cursor.getString(orderIndex);
                     String quantity = cursor.getString(quantityIndex);
                     String category = cursor.getString(categoryIndex);
+                    String item = "";
+
+                    // Check if the itemIndex is valid before accessing the item value
+                    if (itemIndex >= 0) {
+                        item = cursor.getString(itemIndex);
+                    }
 
                     itemList.append("Order: ").append(order).append(", ")
                             .append("Quantity: ").append(quantity).append(", ")
-                            .append("Category: ").append(category).append("\n");
-
+                            .append("Category: ").append(category).append(", ")
+                            .append("Item: ").append(item).append("\n");
                 }
-                while (cursor.moveToNext()) ;
+            } while (cursor.moveToNext());
 
-                outputTextView.setText(itemList.toString());
-
-                cursor.close();
-            } else{
-                outputTextView.setText("No items saved yet.");
-            }
+            outputTextView.setText(itemList.toString());
+            cursor.close();
+        } else {
+            outputTextView.setText("No items saved yet.");
         }
     }
+
 }
