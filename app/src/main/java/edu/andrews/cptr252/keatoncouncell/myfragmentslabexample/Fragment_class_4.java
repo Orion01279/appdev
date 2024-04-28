@@ -142,7 +142,6 @@ public class Fragment_class_4 extends Fragment {
     }
 
     private void deleteItem() {
-        // Your deleteItem() implementation
         int result = database.delete("ShoppingList", null, null);
 
         if (result == 0) {
@@ -161,33 +160,33 @@ public class Fragment_class_4 extends Fragment {
         super.onDestroy();
     }
     private void displaySavedList() {
-        // Query your database to retrieve the saved items
+
         Cursor cursor = database.rawQuery("SELECT * FROM ShoppingList", null);
 
-        // Check if the cursor is not null and has data
         if (cursor != null && cursor.moveToFirst()) {
             StringBuilder itemList = new StringBuilder();
 
-            // Iterate through the cursor to retrieve each item
-            do {
-                String order = cursor.getString(cursor.getColumnIndex("OrderNumber"));
-                String quantity = cursor.getString(cursor.getColumnIndex("ProductQuantity"));
-                String category = cursor.getString(cursor.getColumnIndex("Category"));
 
-                // Append the item details to the itemList StringBuilder
+            do {
+                int orderIndex = cursor.getColumnIndex("OrderNumber");
+                int quantityIndex = cursor.getColumnIndex("ProductQuantity");
+                int categoryIndex = cursor.getColumnIndex("Category");
+
+                if (orderIndex >= 0 && quantityIndex >= 0 && categoryIndex >= 0) {
+                    String order = cursor.getString(orderIndex);
+                    String quantity = cursor.getString(quantityIndex);
+                    String category = cursor.getString(categoryIndex);
+
                 itemList.append("Order: ").append(order).append(", ")
                         .append("Quantity: ").append(quantity).append(", ")
                         .append("Category: ").append(category).append("\n");
 
             } while (cursor.moveToNext());
 
-            // Set the formatted list to the TextView
             outputTextView.setText(itemList.toString());
 
-            // Close the cursor
             cursor.close();
         } else {
-            // If there are no saved items, display a message
             outputTextView.setText("No items saved yet.");
         }
     }
