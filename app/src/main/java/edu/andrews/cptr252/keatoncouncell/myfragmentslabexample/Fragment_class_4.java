@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -37,6 +38,12 @@ public class Fragment_class_4 extends Fragment {
         btnSave = Fragment4View.findViewById(R.id.btnSave);
         btnDelete = Fragment4View.findViewById(R.id.btnDelete);
         outputTextView = Fragment4View.findViewById(R.id.Output);
+        Spinner spinnerCategory = Fragment4View.findViewById(R.id.spinnerCat);
+
+        String[] categories = {"Frozen", "Grocery", "Produce"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, categories);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCat.setAdapter(adapter);
 
         database = getActivity().openOrCreateDatabase("ShoppingListDB", Context.MODE_PRIVATE, null);
         createTable();
