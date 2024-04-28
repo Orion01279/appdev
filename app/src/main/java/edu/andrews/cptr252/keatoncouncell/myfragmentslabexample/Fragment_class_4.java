@@ -103,7 +103,8 @@ public class Fragment_class_4 extends Fragment {
                         "frozen vegetables","popsicles","ice cream","waffles"};
                 break;
             case "Grocery":
-                items = new String[]{"canned goods", "cereal", "chips", "gatorade", "granola bars","pasta", "popcorn","sauce","seasoning","cooking oil"};
+                items = new String[]{"canned goods", "cereal", "chips", "gatorade",
+                        "granola bars","pasta", "popcorn","sauce","seasoning","cooking oil"};
                 break;
             case "Produce":
                 items = new String[]{"apples", "avocados", "bananas", "broccoli",
@@ -128,7 +129,7 @@ public class Fragment_class_4 extends Fragment {
         String code = editCodeEditText.getText().toString();
         String category = categorySpinner.getSelectedItem().toString();
         String item = itemSpinner.getSelectedItem().toString();
-        
+
         ContentValues values = new ContentValues();
         values.put("OrderNumber", order);
         values.put("ProductQuantity", code);
