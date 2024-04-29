@@ -186,8 +186,8 @@ public class Fragment_class_4 extends Fragment {
 
                     itemList.append("Order: ").append(order).append(", ")
                             .append("Quantity: ").append(quantity).append(", ")
-                            .append("Category: ").append(category).append(", ")
-                            .append("Item: ").append(item).append("\n");
+                            .append("Category: ").append(category).append("\n");
+//                            .append("Item: ").append(item).append("\n");
                 }
             } while (cursor.moveToNext());
 
