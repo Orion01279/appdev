@@ -112,7 +112,7 @@ public class Fragment_class_4 extends Fragment {
                         "orange","peppers","pineapple"};
                 break;
             default:
-                items = new String[]{};
+                items = new String[]{"default"};
                 break;
         }
         ArrayAdapter<String> itemAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, items);
@@ -121,7 +121,7 @@ public class Fragment_class_4 extends Fragment {
     }
 
     private void createTable() {
-        database.execSQL("CREATE TABLE IF NOT EXISTS ShoppingList (OrderNumber TEXT, ProductQuantity TEXT, Category TEXT);");
+        database.execSQL("CREATE TABLE IF NOT EXISTS ShoppingList (OrderNumber TEXT, ProductQuantity TEXT, Category TEXT, Item TEXT);");
     }
 
     private void saveItem() {
@@ -134,6 +134,7 @@ public class Fragment_class_4 extends Fragment {
         values.put("OrderNumber", order);
         values.put("ProductQuantity", code);
         values.put("Category", category);
+        values.put("Item", item);
         long result = database.insert("ShoppingList", null, values);
 
         if (result  == -1){
@@ -177,7 +178,8 @@ public class Fragment_class_4 extends Fragment {
                     String order = cursor.getString(orderIndex);
                     String quantity = cursor.getString(quantityIndex);
                     String category = cursor.getString(categoryIndex);
-                    String item = "";
+                    //String item = cursor.getString(itemIndex);
+                    String item = "hi";
 
                     // Check if the itemIndex is valid before accessing the item value
                     if (itemIndex >= 0) {
@@ -186,8 +188,8 @@ public class Fragment_class_4 extends Fragment {
 
                     itemList.append("Order: ").append(order).append(", ")
                             .append("Quantity: ").append(quantity).append(", ")
-                            .append("Category: ").append(category).append("\n");
-//                            .append("Item: ").append(item).append("\n");
+                            .append("Category: ").append(category).append(", ")
+                            .append("Item: ").append(item).append("\n");
                 }
             } while (cursor.moveToNext());
 
