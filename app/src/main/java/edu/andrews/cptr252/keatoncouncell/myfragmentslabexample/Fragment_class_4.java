@@ -121,7 +121,7 @@ public class Fragment_class_4 extends Fragment {
     }
 
     private void createTable() {
-        database.execSQL("CREATE TABLE IF NOT EXISTS ShoppingList (OrderNumber TEXT, ProductQuantity TEXT, Category TEXT, Item TEXT);");
+        database.execSQL("CREATE TABLE IF NOT EXISTS ShoppingList (OrderNumber TEXT, ProductQuantity TEXT, Category TEXT);");
     }
 
     private void saveItem() {
@@ -134,7 +134,7 @@ public class Fragment_class_4 extends Fragment {
         values.put("OrderNumber", order);
         values.put("ProductQuantity", code);
         values.put("Category", category);
-        values.put("Item", item);
+        //values.put("Item", item);
         long result = database.insert("ShoppingList", null, values);
 
         if (result  == -1){
@@ -179,7 +179,7 @@ public class Fragment_class_4 extends Fragment {
                     String quantity = cursor.getString(quantityIndex);
                     String category = cursor.getString(categoryIndex);
                     //String item = cursor.getString(itemIndex);
-                    String item = "hi";
+                    String item = "apples";
 
                     // Check if the itemIndex is valid before accessing the item value
                     if (itemIndex >= 0) {
