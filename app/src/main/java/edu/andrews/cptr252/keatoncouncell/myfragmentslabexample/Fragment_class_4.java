@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 public class Fragment_class_4 extends Fragment {
@@ -41,30 +42,46 @@ public class Fragment_class_4 extends Fragment {
         orderEditText = Fragment4View.findViewById(R.id.order);
         editCodeEditText = Fragment4View.findViewById(R.id.editCode);
         categorySpinner = Fragment4View.findViewById(R.id.spinnerCat);
-        itemSpinner = Fragment4View.findViewById(R.id.spinnerCat1);
+        //itemSpinner = Fragment4View.findViewById(R.id.spinnerCat1);
 
         btnSave = Fragment4View.findViewById(R.id.btnSave);
         btnDelete = Fragment4View.findViewById(R.id.btnDelete);
         outputTextView = Fragment4View.findViewById(R.id.Output);
 
         String[] categories = {"Frozen", "Grocery", "Produce"};
+
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, categories);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(categoryAdapter);
 
-        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedCategory = (String) parent.getItemAtPosition(position);
-                // Based on selected category, populate item spinner with corresponding items
-                populateItemSpinner(selectedCategory);
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
+        String[] items = {"vegetarian meat", "french fries", "frozen meals",
+                        "frozen pizza", "frozen spices","frozen fruit",
+                        "frozen vegetables","popsicles","ice cream","waffles",
+                        "canned goods", "cereal", "chips", "gatorade",
+                        "granola bars","pasta", "popcorn","sauce","seasoning","cooking oil" ,
+                        "apples", "avocados", "bananas", "broccoli",
+                        "grapes","lettuce", "onion",
+                        "orange","peppers","pineapple"
+                            };
+
+//        ArrayAdapter<String> itemAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, items);
+//        itemAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        itemSpinner.setAdapter(itemAdapter);
+
+        //categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+           // @Override
+            //public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+               // String selectedCategory = (String) parent.getItemAtPosition(position);
+                // Based on selected category, populate item spinner with corresponding items
+                //populateItemSpinner(selectedCategory);
+            //}
+
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//                // Do nothing
+//            }
+//        });
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +99,7 @@ public class Fragment_class_4 extends Fragment {
         });
 
         database = getActivity().openOrCreateDatabase("ShoppingListDB", Context.MODE_PRIVATE, null);
+       // populateItemSpinner();
         createTable();
 //        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("info", Context.MODE_PRIVATE);
 //        SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -94,31 +112,31 @@ public class Fragment_class_4 extends Fragment {
         return Fragment4View;
     }
 
-    private void populateItemSpinner(String category) {
-        String[] items;
-        switch (category) {
-            case "Frozen":
-                items = new String[]{"vegetarian meat", "french fries", "frozen meals",
-                        "frozen pizza", "frozen spices","frozen fruit",
-                        "frozen vegetables","popsicles","ice cream","waffles"};
-                break;
-            case "Grocery":
-                items = new String[]{"canned goods", "cereal", "chips", "gatorade",
-                        "granola bars","pasta", "popcorn","sauce","seasoning","cooking oil"};
-                break;
-            case "Produce":
-                items = new String[]{"apples", "avocados", "bananas", "broccoli",
-                        "grapes","lettuce", "onion",
-                        "orange","peppers","pineapple"};
-                break;
-            default:
-                items = new String[]{"default"};
-                break;
-        }
-        ArrayAdapter<String> itemAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, items);
-        itemAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        itemSpinner.setAdapter(itemAdapter);
-    }
+//    private void populateItemSpinner( String category) {
+//        String[] items;
+//        switch (category) {
+//            case "Frozen":
+//                items = new String[]{"vegetarian meat", "french fries", "frozen meals",
+//                        "frozen pizza", "frozen spices","frozen fruit",
+//                        "frozen vegetables","popsicles","ice cream","waffles"};
+//                break;
+//            case "Grocery":
+//                items = new String[]{"canned goods", "cereal", "chips", "gatorade",
+//                        "granola bars","pasta", "popcorn","sauce","seasoning","cooking oil"};
+//                break;
+//            case "Produce":
+//                items = new String[]{"apples", "avocados", "bananas", "broccoli",
+//                        "grapes","lettuce", "onion",
+//                        "orange","peppers","pineapple"};
+//                break;
+//            default:
+//                items = new String[]{"default"};
+//                break;
+//        }
+//        ArrayAdapter<String> itemAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, items);
+//        itemAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        itemSpinner.setAdapter(itemAdapter);
+//    }
 
     private void createTable() {
         database.execSQL("CREATE TABLE IF NOT EXISTS ShoppingList (OrderNumber TEXT, ProductQuantity TEXT, Category TEXT);");
@@ -128,7 +146,8 @@ public class Fragment_class_4 extends Fragment {
         String order = orderEditText.getText().toString();
         String code = editCodeEditText.getText().toString();
         String category = categorySpinner.getSelectedItem().toString();
-        String item = itemSpinner.getSelectedItem().toString();
+        //populateItemSpinner(category);
+        //String item = itemSpinner.getSelectedItem().toString();
 
         ContentValues values = new ContentValues();
         values.put("OrderNumber", order);
@@ -178,18 +197,18 @@ public class Fragment_class_4 extends Fragment {
                     String order = cursor.getString(orderIndex);
                     String quantity = cursor.getString(quantityIndex);
                     String category = cursor.getString(categoryIndex);
-                    //String item = cursor.getString(itemIndex);
+                   // String item = cursor.getString(itemIndex);
                     String item = "vegetarian meat";
 
                     // Check if the itemIndex is valid before accessing the item value
-                    if (itemIndex >= 0) {
-                        item = cursor.getString(itemIndex);
-                    }
+                    //if (itemIndex >= 0) {
+                    //    item = cursor.getString(itemIndex);
+                    //}
 
                     itemList.append("Order: ").append(order).append(", ")
-                            .append("Quantity: ").append(quantity).append(", ")
-                            .append("Category: ").append(category).append(", ")
-                            .append("Item: ").append(item).append("\n");
+                            .append("Item: ").append(quantity).append(", ")
+                            .append("Category: ").append(category).append("\n ");
+                            //.append("Item: ").append(item).append("\n");
                 }
             } while (cursor.moveToNext());
 

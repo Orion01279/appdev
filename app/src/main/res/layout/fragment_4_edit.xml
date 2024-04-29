@@ -47,7 +47,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
         android:ems="10"
-        android:hint="Product Quantity"
+        android:hint="Item"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -65,17 +65,17 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
         />
-    <Spinner
-        android:id="@+id/spinnerCat1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/spinnerCat"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="20dp"
-        />
+<!--    <Spinner-->
+<!--        android:id="@+id/spinnerCat1"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/spinnerCat"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        />-->
 
 
 
@@ -87,7 +87,7 @@
         android:layout_marginTop="44dp"
         android:text="Save"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCat1" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCat" />
 
     <Button
         android:id="@+id/btnDelete"
@@ -97,7 +97,7 @@
         android:layout_marginEnd="48dp"
         android:text="Delete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCat1" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCat" />
 
     <TextView
         android:id="@+id/Output"
