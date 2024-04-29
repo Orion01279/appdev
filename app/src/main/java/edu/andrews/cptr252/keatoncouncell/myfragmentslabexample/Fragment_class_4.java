@@ -179,7 +179,7 @@ public class Fragment_class_4 extends Fragment {
                     String quantity = cursor.getString(quantityIndex);
                     String category = cursor.getString(categoryIndex);
                     //String item = cursor.getString(itemIndex);
-                    String item = "apples";
+                    String item = "vegetarian meat";
 
                     // Check if the itemIndex is valid before accessing the item value
                     if (itemIndex >= 0) {
